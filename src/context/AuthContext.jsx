@@ -11,7 +11,7 @@ const AuthContext = ({ children }) => {
     const error = (msg) => toast.error(msg);
 
     const register = async (data, navigate) => {
-        const res = await axios.post('https://protected-route-backend.vercel.app/api/register', data , {
+        const res = await axios.post('https://protected-route-backen.vercel.app/api/register', data , {
             withCredentials: true
         });
         if(res.data.status){
@@ -23,7 +23,7 @@ const AuthContext = ({ children }) => {
     }
 
     const login = async (data, navigate) => {
-        const res = await axios.post('https://protected-route-backend.vercel.app/api/login', data , {
+        const res = await axios.post('https://protected-route-backen.vercel.app/api/login', data , {
             withCredentials: true
         });
         if(res.data.status){
@@ -43,7 +43,7 @@ const AuthContext = ({ children }) => {
             },
             withCredentials: true
         }
-        const res = await axios.post('https://protected-route-backend.vercel.app/api/profile', {}, header);
+        const res = await axios.post('https://protected-route-backen.vercel.app/api/profile', {}, header);
         if(res.data.status){
             setUser(res.data.user);
         }else{
