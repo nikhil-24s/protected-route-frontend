@@ -11,7 +11,9 @@ const AuthContext = ({ children }) => {
     const error = (msg) => toast.error(msg);
 
     const register = async (data, navigate) => {
-        const res = await axios.post('https://protected-route-backend.vercel.app/api/register', data);
+        const res = await axios.post('https://protected-route-backend.vercel.app/api/register', data , {
+            withCredentials: true
+        });
         if(res.data.status){
             success(res.data.message);
             navigate('/login')
@@ -21,7 +23,9 @@ const AuthContext = ({ children }) => {
     }
 
     const login = async (data, navigate) => {
-        const res = await axios.post('https://protected-route-backend.vercel.app/api/login', data);
+        const res = await axios.post('https://protected-route-backend.vercel.app/api/login', data , {
+            withCredentials: true
+        });
         if(res.data.status){
             success(res.data.message);
             localStorage.setItem('token',res.data.token)
@@ -36,7 +40,8 @@ const AuthContext = ({ children }) => {
         const header ={
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
-            }
+            },
+            withCredentials: true
         }
         const res = await axios.post('https://protected-route-backend.vercel.app/api/profile', {}, header);
         if(res.data.status){
