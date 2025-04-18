@@ -11,7 +11,7 @@ const AuthContext = ({ children }) => {
     const error = (msg) => toast.error(msg);
 
     const register = async (data, navigate) => {
-        const res = await axios.post('http://localhost:3000/api/register', data);
+        const res = await axios.post('https://protected-route-backend-git-main-nikhileshs-projects-a60cace8.vercel.app/api/register', data);
         if(res.data.status){
             success(res.data.message);
             navigate('/login')
@@ -21,7 +21,7 @@ const AuthContext = ({ children }) => {
     }
 
     const login = async (data, navigate) => {
-        const res = await axios.post('http://localhost:3000/api/login', data);
+        const res = await axios.post('https://protected-route-backend-git-main-nikhileshs-projects-a60cace8.vercel.app/api/login', data);
         if(res.data.status){
             success(res.data.message);
             localStorage.setItem('token',res.data.token)
@@ -38,7 +38,7 @@ const AuthContext = ({ children }) => {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }
-        const res = await axios.post('http://localhost:3000/api/profile', {}, header);
+        const res = await axios.post('https://protected-route-backend-git-main-nikhileshs-projects-a60cace8.vercel.app/api/profile', {}, header);
         if(res.data.status){
             setUser(res.data.user);
         }else{
